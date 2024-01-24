@@ -8,8 +8,11 @@ spec:
       containers:
       - name: k6
         image: k6-load-test:latest
+        env:
+        - name: K6_PROMETHEUS_RW_SERVER_URL
+          value: http://192.168.0.2:9090/api/v1/write
         imagePullPolicy: Never
-        args: ["run", "-o", "experimental-prometheus-rw=http://prometheus:9090/api/v1/write", "./k6/entry-test.js"]
+        args: ["run", "-o", "experimental-prometheus-rw", "./k6/entry-test.js"]
         volumeMounts:
         - name: script-volume
           mountPath: /scripts
