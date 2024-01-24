@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k6-load-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k6-load-test
+  template:
+    metadata:
+      labels:
+        app: k6-load-test
+    spec:
+      containers:
+      - name: k6
+        image: k6-load-test:latest
+        imagePullPolicy: Never
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "250m"
+          limits:
+            memory: "512Mi"
+            cpu: "500m"
