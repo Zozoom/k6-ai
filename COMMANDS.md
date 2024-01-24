@@ -24,3 +24,4 @@ kubectl logs <pod-name>
 
 kubectl delete job k6-test-job
 
+k6 run -o experimental-prometheus-rw=http://localhost:9090/api/v1/write ./entry-test.js

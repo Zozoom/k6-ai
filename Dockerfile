@@ -8,7 +8,7 @@ WORKDIR /k6
 COPY ./tests /k6/tests
 COPY ./config /k6/config
 COPY ./utils /k6/utils
-COPY ./entry-test.js /k6/entry-test.js
+COPY ./entry-test.js ./k6/entry-test.js
 
 # Set the default command to run when starting the container
-CMD ["run", "/k6/entry-test.js"] # Replace with your default test script
+CMD ["run", "./k6/entry-test.js"] # Replace with your default test script
