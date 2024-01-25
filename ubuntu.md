@@ -13,3 +13,12 @@ COPY --from=k6stage /usr/bin/k6 /usr/bin/k6
 
 # Set entrypoint to k6
 ENTRYPOINT ["k6"]
+
+
+
+
+# Replace HTTPS with HTTP in the repositories file
+RUN sed -i 's/https/http/g' /etc/apk/repositories
+
+# Now try installing GnuPG without SSL/TLS
+RUN apk update && apk add gnupg
